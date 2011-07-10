@@ -1,0 +1,62 @@
+<!--
+<?xml version="1.0" encoding ="UTF-8"?>
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
+
+<html xlmns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title> myCho </title>
+</head>
+<body>
+	<a href="#"> <h1> myCho Services</h1></a>
+
+	<a href ="#">My Account </a>| <a href ="#"> Services </a>| <a href ="#"> Preordering </a>| <a href ="#"> Reservations </a> | <a href ="#"> Delivery </a>
+	<div id="content">
+		{% block content %}
+		{% endblock%}
+	</div>
+</body>
+</html>
+
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to myCho!</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+</head>
+<body>
+
+
+
+	<div data-role="page" id="home">
+		<div data-role="footer">
+		<div data-role="navbar">
+			<ul><li><a href="#" data-icon="home"> My Account</a></li>
+			    <li><a href="#" data-icon="search">Search </a></li>
+			</ul>
+		</div>
+		</div>
+		 
+		<div data-role="content" id="content">
+
+	
+
+		<a href="#" data-role="button" data-icon="plus">Pre-Order </a>
+		<a href="#" data-role="button" data-icon="plus">Delivery </a>
+		<a href="#" data-role="button" data-icon="plus">Reservation </a>
+		</div>
+
+		 <div data-role="footer">
+			  <h4>myCho Food Application ;)</h4>
+		 </div>
+	</div>
+
+
+
+</body>
+</html>
