@@ -1,0 +1,22 @@
+{% extends "Cho/base.html" %}
+
+{% block _content %}
+
+	<div data-role="content">
+		<div class="content-primary">	
+						
+			<ul data-role="listview">
+				{% for vendor in vendor_list %}
+				<li>	<!--<a href="index.html"> -->
+					<!--<img src="#" />-->
+					<a href="/cho/vendor_detail/{{vendor.id}}">{{ vendor }} </a> 					
+					<!--</a>-->
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+									
+	</div>
+	
+
+{% endblock %}

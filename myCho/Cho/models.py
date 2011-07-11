@@ -91,7 +91,7 @@ class Vendor(models.Model):
 #	Categories = #list
 	
 	def __unicode__(self):
-		return self.name+" menu "+menu
+		return self.name
 	def name_first_20(self):
 		return self.name[:20]
 

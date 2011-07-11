@@ -1,0 +1,12 @@
+{% extends "Cho/base.html" %}
+
+{% block _content %}
+
+Name: {{vendor.name}}<br>
+Email: {{vendor.email}}<br>
+Rating: {{vendor.rating}}/5<br>
+Location: {{vendor.location}}<br>
+<a href="/cho/vendor/{{vendor.id}}/menu"> View {{ vendor.menu}} </a>
+
+
+{% endblock %}

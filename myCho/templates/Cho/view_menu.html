@@ -1,0 +1,39 @@
+{% extends "Cho/base.html" %}
+
+{% block _content %}
+
+	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+				
+<!-- THIS MIGHT BE BETTER BUT NEED TO GET MY WAY AROUND IT...! TRYING TO SHOW THE CATEGORIES ONLY IF, THEY HAVE MENU ITEMS ASSOCIATED WITH THEM!
+			{%for category in categories%}
+	
+					{%for item in items%}
+						{% if item.category == category%}
+							<li data-role="list-divider">{{category}}</li> 	
+							{%for item in items%}
+
+							<li> {{item}}</li>
+							{%endfor%}
+						{%endif%}
+					{%endfor%}	
+
+			{%endfor%}
+-->
+{%for category in categories%}
+				<li data-role="list-divider">{{category}}</li> 	
+					{%for item in items%}
+						{% if item.category == category%}
+						<li> {{item}}</li>
+						{%else%}
+						<li>--</li>
+						{%endif%}
+
+					{%endfor%}	
+
+			{%endfor%}
+
+				
+
+	</ul>
+
+{% endblock %}
