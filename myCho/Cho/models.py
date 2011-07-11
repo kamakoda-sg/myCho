@@ -47,17 +47,43 @@ favourites
 
 '''
 
-
+'''
 class Menu(models.Model):
 	#category = models.ForeignKey(MenuCategory)
 	#menu_item = models.ForeignKey(MenuItem)
+	#vendor = models.ForeignKey(Vendor)
 	name = models.CharField(max_length=100)
 	def __unicode__(self):
 		return self.name+"'s Menu"
+'''
+
+
+
+
+class Vendor(models.Model):
+	name = models.CharField(max_length=50)
+	password = models.CharField(max_length=50)
+	email = models.EmailField(max_length=80) # preferably models.EmailField
+	rating = models.IntegerField()
+#	menu = models.ForeignKey(Menu) Out!!!!!!!!!!!!!!!!!!!!
+	location = models.CharField(max_length=150)
+	#details = models.CharField(max_length=150)
+	#history = models.TextField(max_length=700)
+#	Categories = #list
+	
+	def __unicode__(self):
+		return self.name
+	def name_first_20(self):
+		return self.name[:20]
+
+
+
+
 
 class MenuCategory(models.Model):
 	category = models.CharField(max_length=50)
-	menu = models.ForeignKey(Menu)
+	#menu = models.ForeignKey(Menu) OUT FOR GOOD
+	vendor = models.ForeignKey(Vendor)
 	#JUST COMMENTED FOR TESTING SEE
 	#post_items = models.ForeignKey(MenuItem)#list of items /array...
 
@@ -68,32 +94,17 @@ class MenuItem(models.Model):
 	name = models.CharField(max_length=100)
 	size = models.CharField(max_length=10)
 	price = models.DecimalField(decimal_places=2,max_digits=4)
+	vendor = models.ForeignKey(Vendor)
 	category = models.ForeignKey(MenuCategory)
-	menu = models.ForeignKey(Menu)
+	#menu = models.ForeignKey(Menu) OUT FOR GOOD!
 
 	def __unicode__(self):
 		return self.name+"\n size: "+self.size+"\n for "+str(self.price)+" cedis"
 
 
 
+ 
 
-
-
-class Vendor(models.Model):
-	name = models.CharField(max_length=50)
-	password = models.CharField(max_length=50)
-	email = models.EmailField(max_length=80) # preferably models.EmailField
-	rating = models.IntegerField()
-	menu = models.ForeignKey(Menu)
-	location = models.CharField(max_length=150)
-	#details = models.CharField(max_length=150)
-	#history = models.TextField(max_length=700)
-#	Categories = #list
-	
-	def __unicode__(self):
-		return self.name
-	def name_first_20(self):
-		return self.name[:20]
 
 class Review(models.Model):
 	body = models.TextField()
@@ -145,21 +156,21 @@ class PreOrdering(models.Model):
 
 #actually search model...to have beenable to search between vendors, ratings etc
 class VendorAdmin(admin.ModelAdmin):
-	list_display = ('name_first_20','menu','rating')
+	list_display = ('name_first_20','rating')
 	search_fields = ('name','rating')
 
 class MenuItemAdmin(admin.ModelAdmin):
-	list_display = ('name','category','menu')
+	list_display = ('name','category',)
 
 	
 class MenuCategoryAdmin(admin.ModelAdmin):
-	list_display = ('category','menu')
+	list_display = ('category','vendor')
 
 admin.site.register(UserProfile)
 admin.site.register(History)	
 admin.site.register(Review)
 admin.site.register(Vendor,VendorAdmin)
-admin.site.register(Menu)
+#admin.site.register(Menu)
 admin.site.register(MenuItem,MenuItemAdmin)
 admin.site.register(MenuCategory,MenuCategoryAdmin)
 admin.site.register(Delivery)

@@ -12,7 +12,7 @@ from django.forms import ModelForm
 from django.views.decorators.csrf import csrf_exempt
 from django.template import Context, loader
 from django.http import HttpResponse, HttpResponseRedirect
-from models import UserProfile,History, Menu,  MenuCategory,MenuItem, Vendor,Review,  Delivery, Reservation, PreOrdering
+from models import UserProfile,History,  MenuCategory,MenuItem, Vendor,Review,  Delivery, Reservation, PreOrdering
 
 
 def home(request):
@@ -31,35 +31,10 @@ def vendor_list(request,limit=100):
 
 
 
-
-'''@csrf_exempt
-def blog_detail(request,id,showComments=False):
-	blog = Blog.objects.get(pk = id)
-	t = loader.get_template('blog/detail.html')
-	if request.method == 'POST':
-		comment = Comment(post=blog)
-		comment.author = request.user
-
-		form = CommentForm(request.POST, instance=comment)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(request.path)
-	else:	
-		if request.user.is_authenticated:	
-			form = CommentForm()
-			c = Context({'blog':blog,'comments':comments,'form':form.as_p(),'logged_in':request.user.is_authenticated,'author':request.user,'request':request})
-		
-	c = Context({'blog':blog,'comments':comments,'user':str(request.user),'logged_in':request.user.is_authenticated,'request':request})
-	return HttpResponse(t.render(c))
-'''
-
-
-
-
-
-
 def vendor_detail(request,id):
 	vendor = Vendor.objects.get(pk=id)
+#	menu = Menu.objects.filter(vendor__pk=id)
+#	menu=""
 	t = loader.get_template('Cho/vendor_detail.html')
 	c = Context({'vendor':vendor})
 	return HttpResponse(t.render(c))
