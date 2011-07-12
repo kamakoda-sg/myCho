@@ -1,0 +1,27 @@
+{%extends "Cho/base.html" %}
+
+
+{%block _content%}
+<!--
+<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+-->
+<!--THE VENDOR SHOWS MULTIPLE TIMES DEPENDING ON THE NUMBER OF TIMES IT SHOWS IN THE DATABASE..MUST FIX-->
+	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+	{%for vendor in vendors %} --{{vendor}}--
+			{%for review in review_list%}		
+				{%if review.featured_vendor == vendor%}
+
+				<li data-role="list-divider">{{vendor}}</li>
+				<li><a href="/cho/review_detail/{{review.id}}">{{review.body_first_60}}</a></li>
+		{%endif%}
+	{%endfor%}
+
+
+
+		<!--<li><a href="/cho/review_detail/review.featured_vendor.id/">{{review.body_first_60}}</a><li>-->
+	{%endfor%}
+<!--</ul></div></div>-->
+
+{%endblock%}

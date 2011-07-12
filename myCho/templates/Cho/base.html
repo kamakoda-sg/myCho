@@ -36,9 +36,9 @@
 	<div data-role="page" id="home">
 		<div data-role="footer">
 		<div data-role="navbar">
-			<ul><li><a href="#" data-icon="gear"> My Account</a></li>
+			<ul><li><a href="/cho/my_account/1" data-icon="gear"> My Account</a></li>
 			    <li><a href="/cho/vendors" data-icon="grid">Vendors</a></li>
-			    <li><a href="#" data-icon="star">Reviews</a></li>
+			    <li><a href="/cho/reviews" data-icon="star">Reviews</a></li>
 			    <li><a href="#" data-icon="arrow-r">More</a></li>
 			  <!--  <li><a href="#" data-icon="search">Search </a></li> -->
 			</ul>
@@ -50,11 +50,10 @@
 
 		{% block _content %}
 
-
-		<a href="#" data-role="button" data-icon="plus">Pre-Order </a>
-		<a href="#" data-role="button" data-icon="plus">Delivery </a>
-		<a href="#" data-role="button" data-icon="plus">Reservation </a>
-			{% endblock %}
+		<a href="/cho/preorder/vendors" data-role="button" data-icon="plus">Pre-Order </a>
+		<a href="/cho/delivery/vendors" data-role="button" data-icon="plus">Delivery </a>
+		<a href="/cho/reserve/vendors" data-role="button" data-icon="plus">Reservation </a>
+		{% endblock %}
 		</div>
 
 		 <div data-role="footer">

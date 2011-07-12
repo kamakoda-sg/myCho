@@ -1,0 +1,13 @@
+{%extends "Cho/base.html" %}
+
+
+
+
+{%block _content%}
+
+<h1>Review on {{review.featured_vendor}}</h1><br>
+{{review.body}}<br>
+by: {{review.author}}<br>
+on: {{review.created}}
+
+{%endblock%}

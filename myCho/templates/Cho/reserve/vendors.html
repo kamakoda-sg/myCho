@@ -1,0 +1,22 @@
+{%extends "Cho/base.html" %}
+
+
+
+{%block _content%}
+
+
+	<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+{% for vendor in vendors %}
+{% if vendor.does_reservation %}
+
+
+	<li>
+	<a href= "/cho/reserve/vendor/{{vendor.id}}/menu">{{vendor}}</a> 
+</li>
+
+{% endif%}
+{% endfor%}
+</ul></div></div>
+{%endblock%}

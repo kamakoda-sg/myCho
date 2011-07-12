@@ -65,6 +65,9 @@ class Vendor(models.Model):
 	password = models.CharField(max_length=50)
 	email = models.EmailField(max_length=80) # preferably models.EmailField
 	rating = models.IntegerField()
+	does_delivery = models.BooleanField()
+	does_preordering = models.BooleanField()
+	does_reservation = models.BooleanField()
 #	menu = models.ForeignKey(Menu) Out!!!!!!!!!!!!!!!!!!!!
 	location = models.CharField(max_length=150)
 	#details = models.CharField(max_length=150)

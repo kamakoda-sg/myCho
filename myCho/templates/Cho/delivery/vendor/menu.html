@@ -1,0 +1,43 @@
+{% extends "Cho/base.html" %}
+
+{% block _content %}
+
+	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+				
+{%for category in categories%}
+<li data-role="list-divider">{{category}}</li>
+	{% for item in items%}
+		{%if item.category == category %}
+
+
+
+	<div data-role="fieldcontain">
+ 	<fieldset data-role="controlgroup">
+		<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+		<label for="checkbox-1">  {{item}}</label>
+
+ </fieldset>
+</div>
+
+
+		{%else%}
+			currently no item available
+		{%endif%}
+   
+
+	{%endfor%}
+
+
+{%endfor%}
+</ul>
+<div data-role="footer" data-position="inline">
+	<a href="/cho/delivery/vendor/{{vendor.id}}/menu/confirm" data-icon="check" data-theme="b">Done</a>
+</div> 
+
+
+
+{% endblock %}
+
+
+
+
