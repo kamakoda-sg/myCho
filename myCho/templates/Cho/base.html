@@ -1,25 +1,3 @@
-<!--
-<?xml version="1.0" encoding ="UTF-8"?>
-<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtmll/DTD/xhtmll-transitional.dtd">
-
-<html xlmns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title> myCho </title>
-</head>
-<body>
-	<a href="#"> <h1> myCho Services</h1></a>
-
-	<a href ="#">My Account </a>| <a href ="#"> Services </a>| <a href ="#"> Preordering </a>| <a href ="#"> Reservations </a> | <a href ="#"> Delivery </a>
-	<div id="content">
-		{% block content %}
-		{% endblock%}
-	</div>
-</body>
-</html>
-
-
--->
 
 <!DOCTYPE html>
 <html>
@@ -36,6 +14,9 @@
 	<div data-role="page" id="home">
 		<div data-role="footer">
 		<div data-role="navbar">
+		<div data-role="header" data-position="fixed" align="left" data-theme="c">
+		<h1> Welcome to myCho! </h1>
+		</div>
 			<ul><li><a href="/cho/my_account/1" data-icon="gear"> My Account</a></li>
 			    <li><a href="/cho/vendors" data-icon="grid">Vendors</a></li>
 			    <li><a href="/cho/reviews" data-icon="star">Reviews</a></li>
@@ -50,14 +31,14 @@
 
 		{% block _content %}
 
-		<a href="/cho/preorder/vendors" data-role="button" data-icon="plus">Pre-Order </a>
-		<a href="/cho/delivery/vendors" data-role="button" data-icon="plus">Delivery </a>
-		<a href="/cho/reserve/vendors" data-role="button" data-icon="plus">Reservation </a>
+		<a href="/cho/preorder/vendors" data-role="button" data-icon="plus" data-theme="b">Pre-Order </a>
+		<a href="/cho/delivery/vendors" data-role="button" data-icon="plus" data-theme="b">Delivery </a>
+		<a href="/cho/reserve/vendors" data-role="button" data-icon="plus" data-theme="b">Reservation </a>
 		{% endblock %}
 		</div>
 
 		 <div data-role="footer">
-			  <h4><a href="/cho/" data-role="button" data-icon="home" align="left">Home</a>  myCho Food Application ;)  </h4>
+			  <h4><a href="/cho/" data-role="button" data-icon="home" align="left">Home</a>  </h4>
 		 </div>
 	</div>
 

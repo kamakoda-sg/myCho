@@ -1,0 +1,25 @@
+
+{% extends "Cho/base.html" %}
+
+
+{%block _content%}
+	<h2> You are not Logged in! Login to use <b>myCho</b> or.. <b><a href="/reg/sign_up">Sign up </a></b> if you dont have an account</h2>
+
+	{%if logged_in %}
+		<a href="#">Logout</a>
+	{%else%}
+	<form id="signInForm" method="POST"  action="/reg/login"> 
+		{{form}}
+
+<div id="submitDiv" data-role="fieldcontain">    
+		<input type="submit" value="Login" name="login" id="login" data-inline="true"/>
+	</div>
+
+			</form>
+	{%endif%}
+
+
+
+{%endblock%}
+
+

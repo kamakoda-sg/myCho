@@ -46,9 +46,8 @@
 <li data-role="list-divider">{{category}}</li>
 	{% for item in items%}
 		{%if item.category == category %}
-			{{item}} 
-		{%else%}
-			currently no item available
+			<li>{{item}} </li>
+		
 		{%endif%}
 	{%endfor%}
 

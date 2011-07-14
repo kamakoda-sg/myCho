@@ -1,0 +1,19 @@
+{%extends "Cho/base.html" %}
+
+
+
+{%block _content%}
+
+
+<h3>My reviews</h3>
+
+{%for review in reviews%}
+
+
+<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+<li><h5>{{review.featured_vendor}}</h5><br>{{review}}</li>
+</ul></div></div>
+{%endfor%}
+{%endblock%}

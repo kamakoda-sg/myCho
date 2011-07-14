@@ -124,38 +124,53 @@ class Review(models.Model):
 
 class Delivery(models.Model):
 	vendor = models.ForeignKey(Vendor)
-	food_items = models.CharField(max_length=150)
+	food_items = models.TextField()
 	location = models.CharField(max_length=150)
 	recipient = models.ForeignKey(UserProfile)
 	confirmation_code = models.IntegerField()
 	
 	def  __unicode__(self):
-		return "Delivering "+food_items+" to "+ location
+		return "You just asked for "+ self.food_items +" to be dlivered to you at "+ self.location+".\n Your confirmation code is "+str(self.confirmation_code)
+
+
+
+class Spot(models.Model):
+	name = models.CharField(max_length=50)
+	seats = models.IntegerField()
+	description = models.TextField()
+	vendor = models.ForeignKey(Vendor)
+
+	
+
+	def __unicode__(self):
+		return self.name
+
 
 class Reservation(models.Model):
 	vendor = models.ForeignKey(Vendor)
-	date = models.DateTimeField(auto_now=False)
-	table = models.IntegerField()
+	date = models.DateTimeField(auto_now_add=True)
 	person_reserving = models.ForeignKey(UserProfile)
 	confirmation_code = models.IntegerField()
+	selected_spots = models.TextField()
+	
 	
 	def __unicode__(self):
-		return "You have succesfully reserved "+table+" at "+vendor+"for "+date+".\n Your confirmation code is "+confirmation_code
+		return "You have succesfully reserved "+self.selected_spots+" at "+str(self.vendor)+" for "+str(self.date)+".\n Your confirmation code is "+str(self.confirmation_code)+". Please do well to be there ATLEAST on time."
+
+
+
+
 
 class PreOrdering(models.Model):
-
 	vendor = models.ForeignKey(Vendor)
-	ordered_items = models.CharField(max_length=200)#THIS SHOULD BE LIST ONLY LEFT HERE BECUASE OF UNICODE
+	ordered_items = models.TextField(max_length=200)#THIS SHOULD BE LIST ONLY LEFT HERE BECUASE OF UNICODE
 	pick_up_time = models.DateTimeField(auto_now_add=True)#auto add now, incase you ever want to reset the time you would like to pick it up; can debate about 
 	recipient = models.ForeignKey(UserProfile)
 	confirmation_code = models.IntegerField()
 
 
 	def __unicode__(self):
-		return "You have succesfully preordered" +ordered_items+" from "+vendor+". Please do well to arrive at your pick up time "+pick_up_time+"\n Your 			confirmation code is "+confirmation_code #post_vendor.. may be a number...then we will figure how to ge the name of the vendor from that number
-
-
-
+		return "You succesfully preordered " +self.ordered_items+" from "+str(self.vendor)+". \n Please do well to arrive at your pick up time "+str(self.pick_up_time)+"\n. Your 			confirmation code is "+str(self.confirmation_code) #post_vendor.. may be a number...then we will figure how to ge the name of the vendor from that number
 
 #actually search model...to have beenable to search between vendors, ratings etc
 class VendorAdmin(admin.ModelAdmin):
@@ -169,6 +184,9 @@ class MenuItemAdmin(admin.ModelAdmin):
 class MenuCategoryAdmin(admin.ModelAdmin):
 	list_display = ('category','vendor')
 
+class SpotAdmin(admin.ModelAdmin):
+	list_display = ('name','vendor')
+
 admin.site.register(UserProfile)
 admin.site.register(History)	
 admin.site.register(Review)
@@ -178,6 +196,8 @@ admin.site.register(MenuItem,MenuItemAdmin)
 admin.site.register(MenuCategory,MenuCategoryAdmin)
 admin.site.register(Delivery)
 admin.site.register(Reservation)
+admin.site.register(Spot,SpotAdmin)
 admin.site.register(PreOrdering)
+
 
 	

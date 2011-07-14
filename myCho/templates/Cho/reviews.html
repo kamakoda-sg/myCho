@@ -9,13 +9,12 @@
 -->
 <!--THE VENDOR SHOWS MULTIPLE TIMES DEPENDING ON THE NUMBER OF TIMES IT SHOWS IN THE DATABASE..MUST FIX-->
 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
-	{%for vendor in vendors %} --{{vendor}}--
+	{%for vendor in vendors %} 
+			<li data-role="list-divider">{{vendor}}</li>
 			{%for review in review_list%}		
 				{%if review.featured_vendor == vendor%}
-
-				<li data-role="list-divider">{{vendor}}</li>
-				<li><a href="/cho/review_detail/{{review.id}}">{{review.body_first_60}}</a></li>
-		{%endif%}
+					<li><a href="/cho/review_detail/{{review.id}}">{{review.body_first_60}}</a></li>
+				{%endif%}
 	{%endfor%}
 
 

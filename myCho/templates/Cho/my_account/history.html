@@ -1,0 +1,39 @@
+{%extends "Cho/base.html" %}
+
+
+
+{%block _content%}
+
+
+<h3>My history </h3>
+
+{%for order in orders%}
+
+
+<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+<li>{{order}}</li>
+</ul></div></div>
+{%endfor%}
+
+{% for delivery in deliveries%}
+
+<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+<li>{{delivery}}</li>
+</ul></div></div>
+{%endfor%}
+
+
+{% for reservation in reservations%}
+
+<div data-role="content">
+		<div class="content-primary">	
+<ul data-role="listview" >
+<li>{{reservation}}</li>
+</ul></div></div>
+{%endfor%}
+
+{%endblock%}
